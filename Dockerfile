@@ -12,8 +12,10 @@ RUN sudo /env/bin/pip install --upgrade pip
 RUN sudo /env/bin/pip install invoke
 
 # Clean the app directory and clone the Git repository
+#RUN rm -rf /app/* \
+    #&& git clone https://github.com/inventree/inventree-app.git /app
 RUN rm -rf /app/* \
-    && git clone https://github.com/inventree/inventree-app.git /app
+    && git clone --recursive git@github.com:i8degrees-dockerfiles/inventree.git /app
 RUN git config --global --add safe.directory /home/mobiledevops/.flutter-sdk
 # Create a symlink for Python
 RUN sudo ln -s /usr/bin/python3 /usr/bin/python
@@ -31,7 +33,9 @@ RUN git config --global --add safe.directory /home/flutter/flutter-sdk
 
 RUN apt-get -y install openjdk-17-jdk 
 
-RUN echo "storePassword=Secret123\nkeyPassword=Secret123\nkeyAlias=key\nstoreFile=/tmp/keys.jks" > /app/android/key.properties
+#src/inventree-app.git/
+#src/inventree-mobile-app-apk-builder.git/Dockerfile
+RUN echo "storePassword=Secret123\nkeyPassword=Secret123\nkeyAlias=key\nstoreFile=/tmp/keys.jks" > /app/src/inventree-app.git/android/key.properties
 
 RUN echo -ne "\n24333f8a63b6825ea9c5514f83c2829b004d1fee" > /usr/lib/android-sdk/licenses/android-sdk-license && \
 	keytool -genkeypair -v -keystore /tmp/keys.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key -storepass Secret123 -keypass Secret123 -dname "CN=Dummy, OU=Dummy, O=Dummy, L=Dummy, ST=Dummy, C=US" 
