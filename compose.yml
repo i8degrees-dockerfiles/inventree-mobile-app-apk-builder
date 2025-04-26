@@ -1,0 +1,14 @@
+# Docker compose project file
+#
+# 1. 
+---
+
+services:
+  inventree-app:
+    build:
+      context: .
+      dockerfile: "Dockerfile"
+    #env_file:
+      #".env"
+    volumes:
+      "- ./dist:/output:rw"
