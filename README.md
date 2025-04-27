@@ -1,6 +1,8 @@
 InvenTree mobile app: APK builder (Android)
 ==================================
 
+**NOTE(JEFF):** This repository is a fork of the [upstream repository][20].
+
 This repository provides a Dockerfile to automate the build process for the [InvenTree Android app][0], resulting in an APK file placed in the `dist` directory.
 
 In the releases section, one can download pre-built APK files, maintained on a best effort basis.
@@ -52,4 +54,5 @@ Foot Notes
 ----------
 
 [0]: https://play.google.com/store/apps/details?id=inventree.inventree_app
-[10]: 
+[10]: https://github.com/inventree/inventree-app
+[20]: https://github.com/laurensramandt/inventree-mobile-app-apk-builder
