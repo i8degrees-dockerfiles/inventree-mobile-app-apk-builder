@@ -50,9 +50,6 @@ License
 
 Licensed under the MIT License. See the LICENSE file for more information.
 
-Foot Notes
-----------
-
 [0]: https://play.google.com/store/apps/details?id=inventree.inventree_app
 [10]: https://github.com/inventree/inventree-app
 [20]: https://github.com/laurensramandt/inventree-mobile-app-apk-builder
