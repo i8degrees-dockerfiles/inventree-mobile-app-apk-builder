@@ -9,4 +9,11 @@ services:
       context: .
       dockerfile: "Dockerfile"
     volumes:
-      - ./dist:/output:rw
+      - "/etc/localtime:/etc/localtime:ro"
+      #- "/etc/ssl/certs:/etc/ssl/certs:ro"
+      #- "/usr/share/ca-certificates/trust-source/anchors:/etc/ssl/certs:ro"
+      - "./dist:/output:rw"
+    environment:
+      - "TZ=America/Chicago"
+      - "LC_TIME=C.UTF-8"
+      - "COMPOSE_BAKE=true"
