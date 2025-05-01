@@ -5,10 +5,15 @@
 
 services:
   inventree-app:
+    # debug
+    #stdin_open: true
+    #command: /bin/bash
+    #tty: true
     build:
       context: .
       dockerfile: "Dockerfile"
     volumes:
+      #- "./keys.jks:/tmp/keys.jks:ro"
       - "/etc/localtime:/etc/localtime:ro"
       #- "/etc/ssl/certs:/etc/ssl/certs:ro"
       #- "/usr/share/ca-certificates/trust-source/anchors:/etc/ssl/certs:ro"

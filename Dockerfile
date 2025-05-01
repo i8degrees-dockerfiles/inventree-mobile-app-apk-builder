@@ -17,6 +17,7 @@ RUN sudo /env/bin/pip install invoke
 RUN rm -rf /app/* \
     && git clone --recursive https://github.com/i8degrees-dockerfiles/inventree-app.git /app
 RUN git config --global --add safe.directory /home/mobiledevops/.flutter-sdk
+RUN cd /app && git checkout hotfix/self-signed-certs
 # Create a symlink for Python
 RUN sudo ln -s /usr/bin/python3 /usr/bin/python
 
@@ -42,7 +43,7 @@ RUN ls -lhas /app
 
 #USER code
 RUN echo -ne "\n24333f8a63b6825ea9c5514f83c2829b004d1fee" > /usr/lib/android-sdk/licenses/android-sdk-license && \
-	keytool -genkeypair -v -keystore /tmp/keys.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key -storepass Segment-Linguini-Talcum-Scam-Afar-Hurdle6 -keypass Deduce-Sizzle4-Pretzel-Correct-Purify-Senator -dname "CN=Dummy, OU=Dummy, O=Dummy, L=Dummy, ST=Dummy, C=US" 
+  keytool -genkeypair -v -keystore /tmp/keys.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key -storepass Segment-Linguini-Talcum-Scam-Afar-Hurdle6 -keypass Deduce-Sizzle4-Pretzel-Correct-Purify-Senator -dname "CN=Dummy, OU=Dummy, O=Dummy, L=Dummy, ST=Dummy, C=US" 
 RUN /env/bin/invoke android
 
 # dist
