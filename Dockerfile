@@ -15,7 +15,7 @@ RUN sudo /env/bin/pip install invoke
 #RUN rm -rf /app/* \
     #&& git clone https://github.com/inventree/inventree-app.git /app
 RUN rm -rf /app/* \
-    && git clone --recursive git@github.com:i8degrees-dockerfiles/inventree.git /app
+    && git clone --recursive https://github.com/i8degrees-dockerfiles/inventree-app.git /app
 RUN git config --global --add safe.directory /home/mobiledevops/.flutter-sdk
 # Create a symlink for Python
 RUN sudo ln -s /usr/bin/python3 /usr/bin/python
@@ -35,14 +35,18 @@ RUN apt-get -y install openjdk-17-jdk
 
 #src/inventree-app.git/
 #src/inventree-mobile-app-apk-builder.git/Dockerfile
-RUN echo "storePassword=Secret123\nkeyPassword=Secret123\nkeyAlias=key\nstoreFile=/tmp/keys.jks" > /app/src/inventree-app.git/android/key.properties
+RUN ls -lhas /app
+# src/inventree-app.git/android/key.properties
+#RUN echo "storePassword=Segment-Linguini-Talcum-Scam-Afar-Hurdle6\nkeyPassword=Deduce-Sizzle4-Pretzel-Correct-Purify-Senator\nkeyAlias=key\nstoreFile=/tmp/keys.jks" > /app/src/inventree-app.git/android/key.properties
+#RUN echo "storePassword=Segment-Linguini-Talcum-Scam-Afar-Hurdle6\nkeyPassword=Deduce-Sizzle4-Pretzel-Correct-Purify-Senator\nkeyAlias=key\nstoreFile=/tmp/keys.jks" > /app/src/android/key.properties
 
+#USER code
 RUN echo -ne "\n24333f8a63b6825ea9c5514f83c2829b004d1fee" > /usr/lib/android-sdk/licenses/android-sdk-license && \
-	keytool -genkeypair -v -keystore /tmp/keys.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key -storepass Secret123 -keypass Secret123 -dname "CN=Dummy, OU=Dummy, O=Dummy, L=Dummy, ST=Dummy, C=US" 
+	keytool -genkeypair -v -keystore /tmp/keys.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key -storepass Segment-Linguini-Talcum-Scam-Afar-Hurdle6 -keypass Deduce-Sizzle4-Pretzel-Correct-Purify-Senator -dname "CN=Dummy, OU=Dummy, O=Dummy, L=Dummy, ST=Dummy, C=US" 
 RUN /env/bin/invoke android
 
+# dist
 RUN mkdir -p /output
-
 VOLUME ["/output"]
 
 # Set the default command to build the APK
